@@ -321,7 +321,7 @@ MonoBehaviour:
   jumpForce: 6
   groundMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 256
 --- !u!1001 &8002690337056648421
 PrefabInstance:
   m_ObjectHideFlags: 0

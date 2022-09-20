@@ -45,10 +45,8 @@ public class PlayerController : MonoBehaviour
     //comprueba si el jugador esta tocando el suelo
     bool IsTouchingGround() {
         if(Physics2D.Raycast(this.transform.position, Vector2.down, 1.5f, groundMask)) {
-            animator.enabled = true;
             return true;
         } else {
-            animator.enabled = false;
             return false;
         }
     }
