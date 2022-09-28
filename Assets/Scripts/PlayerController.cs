@@ -82,6 +82,7 @@ public class PlayerController : MonoBehaviour
     //comprueba si el jugador esta tocando el suelo
     bool IsTouchingGround() {
         if(Physics2D.Raycast(this.transform.position, Vector2.down, 1.5f, groundMask)) {
+            GameManager.sharedInstance.currentGameState = GameState.inGame;
             return true;
         } else {
             return false;
