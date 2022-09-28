@@ -319,6 +319,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 6
+  runningSpeed: 1
+  flipX: 0
   groundMask:
     serializedVersion: 2
     m_Bits: 256
@@ -339,11 +341,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8002690337545469350, guid: 0a33b294faa008b418af4800bc275d0a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.4998636
+      value: -7.03
       objectReference: {fileID: 0}
     - target: {fileID: 8002690337545469350, guid: 0a33b294faa008b418af4800bc275d0a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6298382
+      value: 0.68
       objectReference: {fileID: 0}
     - target: {fileID: 8002690337545469350, guid: 0a33b294faa008b418af4800bc275d0a, type: 3}
       propertyPath: m_LocalPosition.z
