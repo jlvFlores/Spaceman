@@ -32,14 +32,9 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        if(GameManager.sharedInstance.currentGameState == GameState.inGame){
-            if(Input.GetButtonDown("Jump")){
-                Jump();
-            }
-        } else { //Si no esta en estado inGame
-            rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
+        if(Input.GetButtonDown("Jump")){
+            Jump();
         }
-        
         
         animator.SetBool(STATE_ON_GROUND, IsTouchingGround());
 
@@ -57,8 +52,10 @@ public class PlayerController : MonoBehaviour
     }
 
     void Jump() {
-        if(IsTouchingGround()){
-            rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        if(GameManager.sharedInstance.currentGameState == GameState.inGame){
+            if(IsTouchingGround()){
+                rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            }    
         }
     }
 
