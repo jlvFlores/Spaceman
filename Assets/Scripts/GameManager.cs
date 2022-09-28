@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if(Input.GetButtonDown("Submit")) {
+        if(Input.GetButtonDown("Submit") && currentGameState != GameState.inGame) {
             StartGame();
         }
     }
