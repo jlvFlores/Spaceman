@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rigidBody;
     Animator animator;
-    SpriteRenderer mySpriteRenderer;
+    Vector3 startPosition;
     
     private const string STATE_ALIVE = "isAlive";
     private const string STATE_ON_GROUND = "isOnGround";
@@ -21,13 +21,19 @@ public class PlayerController : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        mySpriteRenderer = GetComponent<SpriteRenderer>();
     }
     
     // Start is called before the first frame update
     void Start() {
         animator.SetBool(STATE_ALIVE, true);
         animator.SetBool(STATE_ON_GROUND, false);
+
+        startPosition = this.transform.position;
+    }
+
+    public void StartGame(){
+        this.transform.position = startPosition;
+        this.rigidBody.velocity = Vector2.zero;
     }
 
     // Update is called once per frame
