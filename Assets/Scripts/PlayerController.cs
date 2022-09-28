@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     //Variables del movimiento
     public float jumpForce = 6f;
-    public float runningSpeed = 1f;
+    public float runningSpeed = 2f;
 
     Rigidbody2D rigidBody;
     Animator animator;
@@ -66,5 +66,10 @@ public class PlayerController : MonoBehaviour
         } else {
             return false;
         }
+    }
+
+    public void Death(){
+        this.animator.SetBool(STATE_ALIVE, false);
+        GameManager.sharedInstance.GameOver();
     }
 }
