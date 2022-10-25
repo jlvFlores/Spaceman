@@ -48,7 +48,7 @@ public class LevelManager : MonoBehaviour
         Vector3 correction = new Vector3(
             spawnPosition.x-block.startPoint.position.x,
             spawnPosition.y-block.startPoint.position.y,
-            0 );
+            -1 );
         block.transform.position = correction;
         currentLevelBlocks.Add(block);
     }
