@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour {
 			LevelManager.sharedInstance.GenerateInitialBlocks();
 			controller.StartGame();
 			MenuManager.sharedInstance.HideMainMenu();
+			collectedObject = 0;
 		} else if(newGameState == GameState.gameOver){
 			//TODO: preparar el juego para el Game Over
 			MenuManager.sharedInstance.ShowMainMenu();
