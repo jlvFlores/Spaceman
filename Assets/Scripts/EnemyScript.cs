@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-    public float movingSpeed = 1.5f;
+    public float movingSpeed = 4f;
 
     Rigidbody2D rigidBody;
 
@@ -12,7 +12,7 @@ public class EnemyScript : MonoBehaviour
 
     private Vector3 startPosition;
 
-    private void Awake() {
+    void Awake() {
         rigidBody = GetComponent<Rigidbody2D>();
         startPosition = this.transform.position;
     }
@@ -22,8 +22,19 @@ public class EnemyScript : MonoBehaviour
         this.transform.position = startPosition;
     }
 
-    // Update is called once per frame
-    void Update() {
-        
+    void FixedUpdate() {
+        float currentMovingSpeed = movingSpeed;
+
+        if (facingRight) {
+            currentMovingSpeed = movingSpeed;
+            this.transform.eulerAngles = new Vector3(0, 180, 0);
+        } else {
+            currentMovingSpeed = -movingSpeed;
+            this.transform.eulerAngles = Vector3.zero;
+        }
+
+        if(GameManager.sharedInstance.currentGameState == GameState.inGame) {
+            rigidBody.velocity = new Vector2(currentMovingSpeed, rigidBody.velocity.y);
+        }
     }
 }
