@@ -16,7 +16,7 @@ public class Collectable : MonoBehaviour
     private SpriteRenderer sprite;
     private CircleCollider2D itemCollider;
 
-    bool hasBeenCollected = false;
+    private bool hasBeenCollected = false;
 
     public int value = 1;
 

@@ -5,15 +5,21 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     //Variables del movimiento
-    public float jumpForce = 6f;
-    public float runningSpeed = 2f;
+    public float jumpForce = 6f, runningSpeed = 2f;
 
     Rigidbody2D rigidBody;
     Animator animator;
     Vector3 startPosition;
     
-    private const string STATE_ALIVE = "isAlive";
-    private const string STATE_ON_GROUND = "isOnGround";
+    private const string STATE_ALIVE = "isAlive", 
+        STATE_ON_GROUND = "isOnGround";
+
+
+    private int healthPoints, manaPoints;
+
+    public const int INITAL_HEALTH = 100, INITAL_MANA = 15,
+        MAX_HEALTH = 200, MAX_MANA = 30,
+        MIN_HEALTH = 10, MIN_MANA = 0;
 
     public LayerMask groundMask;
 
@@ -32,6 +38,8 @@ public class PlayerController : MonoBehaviour
         animator.SetBool(STATE_ALIVE, true);
         animator.SetBool(STATE_ON_GROUND, false);
 
+        healthPoints = INITAL_HEALTH;
+        manaPoints = INITAL_MANA;
         Invoke("RestartPosition", 0.2f);
     }
 
@@ -85,4 +93,27 @@ public class PlayerController : MonoBehaviour
         this.animator.SetBool(STATE_ALIVE, false);
         GameManager.sharedInstance.GameOver();
     }
+
+    public void CollectHealth(int points){
+        this.healthPoints += points;
+        if(this.healthPoints >= MAX_HEALTH){
+            this.healthPoints = MAX_HEALTH;
+        }
+    }
+
+    public void CollectMana(int points){
+        this.manaPoints += points;
+        if(this.manaPoints >= MAX_MANA){
+            this.manaPoints = MAX_MANA;
+        }
+    }
+
+    public int GetHealth(){
+        return healthPoints;
+    }
+
+    public int GetMana(){
+        return manaPoints;
+    }
+
 }
