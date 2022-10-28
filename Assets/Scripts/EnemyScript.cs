@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
     public float movingSpeed = 4f;
+    public int enemyDamage = 10;
 
     Rigidbody2D rigidBody;
 
@@ -36,5 +37,18 @@ public class EnemyScript : MonoBehaviour
         if(GameManager.sharedInstance.currentGameState == GameState.inGame) {
             rigidBody.velocity = new Vector2(currentMovingSpeed, rigidBody.velocity.y);
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision) {
+        if(collision.tag == "Coin"){
+            return;
+        }
+        if(collision.tag == "Player"){
+            collision.gameObject.GetComponent<PlayerController>().
+                CollectHealth(-enemyDamage);
+            return;
+        }
+
+        facingRight = !facingRight;
     }
 }
