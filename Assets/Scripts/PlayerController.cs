@@ -90,6 +90,7 @@ public class PlayerController : MonoBehaviour
         }
         if(GameManager.sharedInstance.currentGameState == GameState.inGame){
             if(IsTouchingGround()){
+                GetComponent<AudioSource>().Play();
                 rigidBody.AddForce(Vector2.up * jumpForceFactor, ForceMode2D.Impulse);
             }    
         }
